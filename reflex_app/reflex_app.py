@@ -28,15 +28,16 @@ def navbar() -> rx.Component:
         spacing="4",
     )
 
-# Creamos un helper para la tarjeta.
+# Creamos un helper para la tarjeta, usando 13.webp como imagen fija.
 def auto_card(
     titulo: str,
     precio: str,
     detalles: str,
-    imagen_url: str = "https://via.placeholder.com/300x180"
 ) -> rx.Component:
+
+
     return rx.box(
-        rx.image(src=imagen_url, border_radius="lg"),
+        rx.image(src="/13.webp", border_radius="lg"),  # Imagen fija desde assets/13.webp
         rx.text(titulo, font_weight="bold", font_size="1.1em"),
         rx.text(precio),
         rx.text(detalles, font_size="0.9em", color="gray"),
@@ -45,6 +46,7 @@ def auto_card(
         border_radius="xl",
         bg="white",
     )
+
 
 def index() -> rx.Component:
     return rx.vstack(
@@ -90,7 +92,7 @@ def index() -> rx.Component:
             width="100%",
         ),
         rx.box(
-            # Aquí construimos la cuadrícula "manual" usando display="grid".
+            # Usamos 13.webp para ambas tarjetas de ejemplo
             auto_card(
                 titulo="Nissan Kicks",
                 precio="$247,999.00",
@@ -101,8 +103,7 @@ def index() -> rx.Component:
                 precio="$353,900.00",
                 detalles="2019 · Manual · 16,000 km · Nuevo",
             ),
-            # ...Puedes añadir más tarjetas
-            display="grid",                      # cuadrícula
+            display="grid",
             grid_template_columns="repeat(3, 1fr)",
             gap="1.5em",
             width="100%",
@@ -113,5 +114,7 @@ def index() -> rx.Component:
         padding="0",
     )
 
+
 app = rx.App()
 app.add_page(index, title="Catálogo de Autos | Jesús")
+
